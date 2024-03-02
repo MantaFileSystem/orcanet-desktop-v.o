@@ -1,14 +1,25 @@
-import { MoreVertical, ChevronLast, ChevronFirst, BarChart2 } from "lucide-react"
-import { useContext, createContext, useState, ReactNode } from "react"
-import { LayoutDashboard, Settings, Receipt, Package} from "lucide-react";
-export const SidebarContext = createContext({ expanded: true })
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
-import orcanetLogo from './../assets/images/orcanetPNG.png';
+import {
+  MoreVertical,
+  ChevronLast,
+  ChevronFirst,
+  BarChart2,
+} from "lucide-react";
+import { useContext, createContext, useState, ReactNode } from "react";
+import { LayoutDashboard, Settings, Receipt, Package } from "lucide-react";
+export const SidebarContext = createContext({ expanded: true });
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import orcanetLogo from "./../assets/images/orcanetPNG.png";
 import React from "react";
 import SidebarItem from "./sidebaritem";
 
 const Sidebar = () => {
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(true);
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
   return (
@@ -36,7 +47,7 @@ const Sidebar = () => {
               <SidebarItem
                 icon={<LayoutDashboard />}
                 text="Home"
-                active={isActive('/')}
+                active={isActive("/")}
                 alert={false}
               />
             </Link>
@@ -44,7 +55,7 @@ const Sidebar = () => {
               <SidebarItem
                 icon={<Package />}
                 text="Store"
-                active={isActive('/store')}
+                active={isActive("/store")}
                 alert={false}
               />
             </Link>
@@ -52,25 +63,25 @@ const Sidebar = () => {
               <SidebarItem
                 icon={<BarChart2 />}
                 text="Market"
-                active={isActive('/market')}
+                active={isActive("/market")}
                 alert={false}
-              />  
+              />
             </Link>
             <Link to="/wallet">
               <SidebarItem
                 icon={<Receipt />}
                 text="Wallet"
-                active={isActive('/wallet')}
+                active={isActive("/wallet")}
                 alert={false}
-              /> 
+              />
             </Link>
             <Link to="/settings">
               <SidebarItem
                 icon={<Settings />}
                 text="Settings"
-                active={isActive('/settings')}
+                active={isActive("/settings")}
                 alert={false}
-              /> 
+              />
             </Link>
           </ul>
         </SidebarContext.Provider>
@@ -88,15 +99,17 @@ const Sidebar = () => {
           `}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">Bubble Guppies</h4>
-              <span className="text-xs text-gray-600">wolfie@gmail.com</span>
+              <h4 className="font-semibold">Wallet Address</h4>
+              <span className="text-xs text-gray-600">
+                1BoatSLRHtKNngkdXEeobR76b53LETtpyT
+              </span>
             </div>
             <MoreVertical size={20} />
           </div>
         </div>
       </nav>
     </aside>
-  )
-}
+  );
+};
 
 export default Sidebar;
