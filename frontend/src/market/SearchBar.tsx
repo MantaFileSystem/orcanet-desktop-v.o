@@ -9,7 +9,7 @@ const SearchBar = () => {
         className="max-w-sm inline"
         placeholder="hash | url"
       />
-      <Button type="submit">Search</Button>
+      <Button type="submit" className="ml-2" size="sm">Search</Button>
     </div>
   );
 };

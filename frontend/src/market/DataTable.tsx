@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm inline"
         />
-        <Button type="submit">Filter</Button>
+        <Button type="submit" className="ml-2 mb-2" size="sm">Filter</Button>
       </div>
       <div className="rounded-md border">
         <Table>
