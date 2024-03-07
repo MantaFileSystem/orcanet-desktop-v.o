@@ -1,0 +1,44 @@
+/* Animation for the card's appearance */
+.chart-card-animation {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Ensuring the chart container within the card takes up the maximum available space */
+  .chart-card .card-body {
+    flex-grow: 1;  /* Make the chart container grow to fill the card */
+    display: flex; /* This makes it a flex container */
+    justify-content: center; /* Center chart horizontally */
+    align-items: center; /* Center chart vertically */
+    padding: 0; /* Optionally remove padding if the chart should take up all the space */
+  }
+  
+  /* If your charts are rendered within a <canvas> or similar element, ensure it fills its container */
+  .chart-card .chart-container {
+    width: 100%; /* Make the chart fill the container width */
+    height: auto; /* Adjust the height as needed, or set to a fixed value */
+  }
+  
+  /* Retaining your transitions for Chartist lines and bars */
+  .ct-chart .ct-line, .ct-chart .ct-bar {
+    transition: stroke-dashoffset 1s ease-out;
+  }
+  
+  /* Styles for the chart itself, assuming it's a <canvas> or similar element */
+  .chart-canvas {
+    width: 100% !important;
+    height: auto !important; /* Or set to a fixed height if preferred */
+  }
+  
+  /* Responsive design: full-width cards on smaller screens */
+  @media (max-width: 768px) {
+    .col-md-4, .col-md-6 {
+      /* Assuming you are using a grid system where col-md-* classes define width */
+      width: 100%; /* Cards take up full width on small screens */
+      margin-bottom: 15px; /* Space between cards when they stack vertically */
+    }
+  }
