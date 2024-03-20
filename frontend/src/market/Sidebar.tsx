@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { Filter, Search, CircleDot, Scroll } from "lucide-react";
+import { Filter, Search, CircleDot} from "lucide-react";
 
 import { useState } from "react";
 
