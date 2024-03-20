@@ -3,6 +3,7 @@ import StorePage from "./store/StorePage";
 import MarketPage from "./market/MarketPage";
 import WalletPage from "./wallet/WalletPage";
 import SettingsPage from "./settings/SettingsPage";
+import StatsPage from "./StatsPage/StatsPage";
 import Sidebar from "./sidebar/Sidebar";
 
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/store" element={<StorePage />} />
+            <Route path="/stats" element={<StatsPage />} />
             <Route path="/market" element={<MarketPage />} />
             <Route path="/wallet" element={<WalletPage />} />
             <Route path="/settings" element={<SettingsPage />} />
@@ -32,6 +34,7 @@ export default App;
 const pageMap: { label: string; path: string }[] = [
   { label: "Home", path: "/" },
   { label: "Store", path: "/store" },
+  { label: "Stats", path: "/stas" },
   { label: "Market", path: "/market" },
   { label: "Wallet", path: "/wallet" },
   { label: "Settings", path: "/settings" },

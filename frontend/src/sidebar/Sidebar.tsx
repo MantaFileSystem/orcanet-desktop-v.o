@@ -47,7 +47,7 @@ const Sidebar = () => {
                 alert={false}
               />
             </Link>
-            <Link to="/Stats">
+            <Link to="/stats">
               <SidebarItem
                 icon={<Package />}
                 text="Stats"
