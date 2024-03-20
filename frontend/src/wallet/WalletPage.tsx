@@ -16,7 +16,7 @@ function SearchBar() {
 
 function WalletContainer() {
   return (
-    <div className="h-full grid grid-cols-5 gap-14">
+    <div className="h-full grid grid-cols-5 gap-7">
       <TransferContainer />
       <WalletInfoContainer />
     </div>
@@ -25,7 +25,10 @@ function WalletContainer() {
 
 const WalletPage = () => {
   return (
-    <div id="wallet-page" className="flex flex-col grow py-11 px-14">
+    <div
+      id="wallet-page"
+      className="flex flex-col overflow-auto min-h-full grow py-11 px-14"
+    >
       <SearchBar />
       <WalletContainer />
     </div>
