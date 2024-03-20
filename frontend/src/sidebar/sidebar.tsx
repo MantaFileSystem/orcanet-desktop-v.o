@@ -4,18 +4,14 @@ import {
   ChevronFirst,
   BarChart2,
 } from "lucide-react";
-import { useContext, createContext, useState, ReactNode } from "react";
+import { createContext, useState} from "react";
 import { LayoutDashboard, Settings, Receipt, Package } from "lucide-react";
 export const SidebarContext = createContext({ expanded: true });
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
   Link,
   useLocation,
 } from "react-router-dom";
 import orcanetLogo from "./../assets/images/OrcaNet-Dark.png";
-import React from "react";
 import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
@@ -51,11 +47,19 @@ const Sidebar = () => {
                 alert={false}
               />
             </Link>
-            <Link to="/store">
+            <Link to="/Stats">
               <SidebarItem
                 icon={<Package />}
-                text="Store"
-                active={isActive("/store")}
+                text="Stats"
+                active={isActive("/stats")}
+                alert={false}
+              />
+            </Link>
+            <Link to="/peer">
+              <SidebarItem
+                icon={<Package />}
+                text="Peer"
+                active={isActive("/peer")}
                 alert={false}
               />
             </Link>
