@@ -1,5 +1,4 @@
 import HomePage from "./home/HomePage";
-import StorePage from "./store/StorePage";
 import MarketPage from "./market/MarketPage";
 import WalletPage from "./wallet/WalletPage";
 import SettingsPage from "./settings/SettingsPage";
@@ -16,7 +15,7 @@ function App() {
           <Sidebar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/store" element={<StorePage />} />
+            <Route path="/stats" element={<HomePage />} />
             <Route path="/market" element={<MarketPage />} />
             <Route path="/wallet" element={<WalletPage />} />
             <Route path="/settings" element={<SettingsPage />} />
