@@ -56,6 +56,14 @@ const Sidebar = () => {
                 alert={false}
               />  
             </Link>
+            <Link to="/peers">
+              <SidebarItem
+                icon={<Receipt />}
+                text="Peers"
+                active={isActive('/peers')}
+                alert={false}
+              /> 
+            </Link>
             <Link to="/wallet">
               <SidebarItem
                 icon={<Receipt />}
