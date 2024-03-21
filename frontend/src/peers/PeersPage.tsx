@@ -73,7 +73,7 @@ const infoprev: InfoPrev[] = [
       file_they_want: "Harvard Dictionary"
     },
     {
-      peerId: "5kma53a",
+      peerId: "5kma53ae",
       email: "Silas22@gmail.com",
       status: "Busy",
       location: "Tokyo, Japan",
@@ -90,57 +90,39 @@ const infoprev: InfoPrev[] = [
     },
     // Add more peers as necessary
 ];
+interface ProfileInfoPopupProps {
+  peer: PeerInfo;
+  position: { top: number; left: number };
+}
 
-const ProfileInfoPopup: React.FC<{ peer: PeerInfo }> = ({ peer }) => {
-  const matchingPeer = infoprev.find((p) => p.peerId === peer.id);
-
+const ProfileInfoPopup: React.FC<ProfileInfoPopupProps> = ({ peer, position }) => {
+  const matchingPeer = infoprev.find((p) => p.peerId === peer.id); // Ensure infoprev is accessible
+  console.log(peer, position);
   if (!matchingPeer) {
-    console.log("HELLO NO MATCHING");
-    return null; // Handle the case where there's no matching peer
+    return null;
   }
-  console.log("YES MATCHING");
+
+
+  const style = {
+    position: 'absolute' as 'absolute', // Explicitly cast the value to 'absolute'
+    top: `${position.top}px`,
+    left: `${position.left}px`,
+    zIndex: 1000,
+    backgroundColor: 'white',
+    border: '1px solid black',
+    padding: '10px',
+  };
+
   return (
-    <div className="relative">
-      <div className="p-4 bg-yellow shadow-lg rounded-lg z-10">
-        <div className="mt-2">
-          <p>Email: {matchingPeer.email}</p>
-          <p>Status: {matchingPeer.status}</p>
-          <p>Location: {matchingPeer.location}</p>
-          <p>Latency: {matchingPeer.latency}</p>
-          <p>File They Want: {matchingPeer.file_they_want}</p>
-        </div>
+    // <div style={style} className="popup-class">
+      <div className="mt-2">
+        <p>Email: {matchingPeer.email}</p>
+        <p>Status: {matchingPeer.status}</p>
+        <p>Location: {matchingPeer.location}</p>
+        <p>Latency: {matchingPeer.latency}</p>
+        <p>File They Want: {matchingPeer.file_they_want}</p>
       </div>
-    </div>
-  );
-};
-
-const TableRowWithPopup: React.FC<{ peer: PeerInfo }> = ({ peer }) => {
-  const [showPopup, setShowPopup] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = () => {
-    // Set a timer to show the popup after 1 second
-    timerRef.current = setTimeout(() => setShowPopup(true), 1000);
-  };
-
-  const handleMouseLeave = () => {
-    // Clear the timer when leaving the row
-    clearTimeout(timerRef.current!);
-    setShowPopup(false);
-  };
-
-  return (
-    <tr
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="relative cursor-pointer"
-    >
-      <td>{peer.id}</td>
-      <td>{peer.email}</td>
-      <td>{peer.status}</td>
-      <td>{peer.amount}</td>
-      {showPopup && <ProfileInfoPopup peer={peer} />}
-    </tr>
+    // </div>
   );
 };
 
@@ -329,7 +311,10 @@ const PeersPage = () => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [hoveredPeer, setHoveredPeer] = useState<PeerInfo | null>(null);
+  const [popupPosition, setPopupPosition] = useState<{ top: number; left: number } | null>(null);
 
+    
   const table = useReactTable({
     data,
     columns,
@@ -387,6 +372,7 @@ const PeersPage = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      <div className="relative">
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -408,52 +394,42 @@ const PeersPage = () => {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <React.Fragment key={row.id}>
-                  <TableRow
-                    onMouseEnter={() => row.toggleSelected(true)} // Select the row on hover
-                    onMouseLeave={() => row.toggleSelected(false)} // Deselect the row when not hovering
-                    data-state={row.getIsSelected() && "selected"}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                  {row.getIsSelected() && <ProfileInfoPopup peer={row.original} />} {/* Show popup if row is selected */}
-                </React.Fragment>
-                // <TableRow
-                //   key={row.id}
-                //   data-state={row.getIsSelected() && "selected"}
-                // >
-                //   {row.getVisibleCells().map((cell) => (
-                //     <TableCell key={cell.id}>
-                //       {flexRender(
-                //         cell.column.columnDef.cell,
-                //         cell.getContext()
-                //       )}
-                //     </TableCell>
-                //   ))}
-                // </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
+          {table.getRowModel().rows.map((row) => (
+            <React.Fragment key={row.id}>
+              <tr
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setHoveredPeer(row.original);
+                  setPopupPosition({
+                    top: rect.bottom + window.scrollY,
+                    left: rect.left,
+                  });
+                }}
+                onMouseLeave={() => {
+                  setHoveredPeer(null);
+                  setPopupPosition(null);
+                }}
+                className="cursor-pointer"
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </tr>
+              {hoveredPeer === row.original && popupPosition && (
+                <tr>
+                  <td colSpan={table.getAllColumns().length}>
+                    <ProfileInfoPopup peer={hoveredPeer} position={popupPosition} />
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
+          ))}
           </TableBody>
 
         </Table>
+      </div>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
