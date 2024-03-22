@@ -1,4 +1,6 @@
 import * as React from "react"
+import "./PeersPage.css"
+import logoUniversal from '../assets/images/Stony_Brook_Seawolves_logo.svg.png';
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -105,23 +107,36 @@ const ProfileInfoPopup: React.FC<ProfileInfoPopupProps> = ({ peer, position }) =
 
   const style = {
     position: 'absolute' as 'absolute', // Explicitly cast the value to 'absolute'
-    top: `${position.top}px`,
-    left: `${position.left}px`,
+    // top: `${position.top}px`,
+    // left: `${position.left}px`,
     zIndex: 1000,
     backgroundColor: 'white',
     border: '1px solid black',
     padding: '10px',
+    display: 'flex', 
+    alignItems: 'center',
+
   };
+  const profilePicStyle = {
+    width: '50px',
+    height: '50px', 
+    borderRadius: '50%', 
+    marginRight: '10px', 
+  };
+
 
   return (
     // <div style={style} className="popup-class">
-      <div className="mt-2">
+    <div style={style} className="popup-class">
+      <img src={logoUniversal} alt="Profile" style={profilePicStyle}/>
+      <div>
         <p>Email: {matchingPeer.email}</p>
         <p>Status: {matchingPeer.status}</p>
         <p>Location: {matchingPeer.location}</p>
         <p>Latency: {matchingPeer.latency}</p>
         <p>File They Want: {matchingPeer.file_they_want}</p>
       </div>
+    </div>
     // </div>
   );
 };
@@ -130,7 +145,7 @@ export type PeerInfo = {
     id: string;
     amount: number;
     status: "Online" | "Busy" | "Offline";
-    email: string;
+    public_address: string;
     activeTime: Date; // Using Date type for activeTime
   }
   
@@ -140,35 +155,35 @@ export type PeerInfo = {
       id: "m5gr84i9",
       amount: 316,
       status: "Online",
-      email: "ken99@yahoo.com",
+      public_address: "ken99@yahoo.com",
       activeTime: new Date('2023-01-01T14:00:00Z'),
     },
     {
       id: "3u1reuv4",
       amount: 242,
       status: "Online",
-      email: "Abe45@gmail.com",
+      public_address: "Abe45@gmail.com",
       activeTime: new Date('2023-02-15T09:30:00Z'),
     },
     {
       id: "derv1ws0",
       amount: 837,
       status: "Offline",
-      email: "Monserrat44@gmail.com",
+      public_address: "Monserrat44@gmail.com",
       activeTime: new Date('2023-03-10T11:45:00Z'),
     },
     {
       id: "5kma53ae",
       amount: 874,
       status: "Busy",
-      email: "Silas22@gmail.com",
+      public_address: "Silas22@gmail.com",
       activeTime: new Date('2023-03-20T16:20:00Z'),
     },
     {
       id: "bhqecj4p",
       amount: 721,
       status: "Offline",
-      email: "carmella@hotmail.com",
+      public_address: "carmella@hotmail.com",
       activeTime: new Date('2023-04-05T07:30:00Z'),
     },
   ];
@@ -243,19 +258,19 @@ export const columns: ColumnDef<PeerInfo>[] = [
     },
   },
   {
-    accessorKey: "email",
+    accessorKey: "public_address",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          public_address
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("public_address")}</div>,
   },
   {
     accessorKey: "amount",
@@ -303,6 +318,31 @@ export const columns: ColumnDef<PeerInfo>[] = [
   },
 ]
 
+const StatusHeader = () => {
+  const dataHosted = '3 MiB of data';
+  const peersDiscovered = data.length;
+  const peerID = '12D3KooWKac...fwzV2';
+  const agentVersion = 'kubo v0.26.0 desktop';
+  const uiVersion = 'e2fc7c8';
+
+  return (
+    <div className="status-header">
+      <div className="connection-status">
+        Connected to Orca<br/>
+        Hosting {dataHosted} — Discovered {peersDiscovered} peers
+      </div>
+      <div className="peer-info">
+        <div><strong>PEER ID</strong> {peerID}</div>
+        <div><strong>AGENT</strong> {agentVersion}</div>
+        <div><strong>UI</strong> {uiVersion}</div>
+      </div>
+      <div>
+        {/* <button className="advanced-button">Advanced</button> */}
+      </div>
+    </div>
+  );
+};
+
 const PeersPage = () => {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -338,10 +378,10 @@ const PeersPage = () => {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter public_address..."
+          value={(table.getColumn("public_address")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("public_address")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -372,6 +412,7 @@ const PeersPage = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      <StatusHeader /> 
       <div className="relative">
       <div className="rounded-md border">
         <Table>
