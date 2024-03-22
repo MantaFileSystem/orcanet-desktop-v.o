@@ -21,6 +21,8 @@ import {
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { MapContainer, TileLayer, Marker, Popup,Circle } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -92,9 +94,60 @@ const infoprev: InfoPrev[] = [
     },
     // Add more peers as necessary
 ];
+interface LocationMapping {
+  [key: string]: { lat: number; lon: number };
+}
+const locationMapping: LocationMapping = {
+  "New York, USA": { lat: 40.7128, lon: -74.0060 },
+  "Tokyo, Japan": { lat: 35.6895, lon: 139.6917 },
+  "Beijing, China": { lat: 39.9042, lon: 116.4074 },
+  // ...other locations
+};
+
+const Map: React.FC<MapProps> = ({ peers }) => {
+  const centralPosition: [number, number] = [35.6895, 139.6917]; // Tokyo, for example
+  const zoom = 2; // Initial zoom level
+
+  // Aggregate peers by location
+  const peersByLocation = peers.reduce((acc, peer) => {
+    const locationKey = peer.location;
+    if (locationKey in acc) {
+      acc[locationKey].push(peer);
+    } else {
+      acc[locationKey] = [peer];
+    }
+    return acc;
+  }, {} as Record<string, InfoPrev[]>);
+
+  return (
+    <MapContainer center={centralPosition} zoom={zoom} style={{ height: '500px', width: '100%' }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {Object.entries(peersByLocation).map(([location, peersAtLocation]) => {
+        const { lat, lon } = locationMapping[location];
+        // Adjust the radius based on the number of peers, e.g., 100 meters per peer
+        const radius = peersAtLocation.length * 100000;
+
+        return (
+          <Circle key={location} center={[lat, lon]} radius={radius} fillOpacity={0.5}>
+            <Popup>
+              {peersAtLocation.length} peers here:<br />
+              {peersAtLocation.map(peer => `${peer.email}`).join(', ')}
+            </Popup>
+          </Circle>
+        );
+      })}
+    </MapContainer>
+  );
+};
+
 interface ProfileInfoPopupProps {
   peer: PeerInfo;
   position: { top: number; left: number };
+}
+interface MapProps {
+  peers: InfoPrev[];
 }
 
 const ProfileInfoPopup: React.FC<ProfileInfoPopupProps> = ({ peer, position }) => {
@@ -413,6 +466,7 @@ const PeersPage = () => {
         </DropdownMenu>
       </div>
       <StatusHeader /> 
+      <Map peers={infoprev} />
       <div className="relative">
       <div className="rounded-md border">
         <Table>
