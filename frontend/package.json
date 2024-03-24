@@ -28,7 +28,8 @@
     "react-router-dom": "^6.22.1",
     "recharts": "^2.12.2",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "react-gauge-component": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.20",
