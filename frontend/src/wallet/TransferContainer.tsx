@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Wallet, Send } from "lucide-react";
+import { MapPin, Wallet, Send, Copy } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import QRCode from "react-qr-code";
@@ -138,8 +138,18 @@ function TransferPanelInput() {
 
 function QRCodeContainer() {
   return (
-    <div className="py-14 rounded-2xl mt-10 grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+    <div className="py-14 rounded-3xl mt-10 grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-500">
       <QRCode value="https://www.google.com" />
+      <div className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 mt-4">
+        <p className="mt-4">
+          12D3KooWM1J3AZKnEvVtEVjwFka2Z2Z9EZo5XVzUoyrAofWRUUWK
+        </p>
+      </div>
+
+      <Button className="rounded-2xl mt-6 py-7 w-64 flex gap-3 bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-lg items-center">
+        <Copy size={20} />
+        Copy
+      </Button>
     </div>
   );
 }
