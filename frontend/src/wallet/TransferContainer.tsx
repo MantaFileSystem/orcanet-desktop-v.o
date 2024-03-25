@@ -99,7 +99,7 @@ function SendContainer({ amount }: { amount: number }) {
     { title: "Total", amount: amount },
   ];
   return (
-    <div className="grid grid-rows-2 font-semibold">
+    <div className="grid grid-rows-2 font-semibold overflow-auto">
       <div className="2xl:grid 2xl:grid-cols-2">
         {summaries.map((summary) => (
           <div key={summary.title} className="flex justify-center">
@@ -138,7 +138,7 @@ function TransferPanelInput() {
 
 function QRCodeContainer() {
   return (
-    <div className="py-14 rounded-3xl mt-10 grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+    <div className="py-14 rounded-3xl mt-10 grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-500 overflow-auto">
       <QRCode value="https://www.google.com" />
       <div className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 mt-4">
         <p className="mt-4">

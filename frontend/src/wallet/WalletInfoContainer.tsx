@@ -18,7 +18,7 @@ function IncomeGraph() {
   };
 
   return (
-    <div>
+    <div className="max-[1000px]:collapse pt-8 animate__animated animate__fadeInUp">
       <ReactApexChart options={options} series={series} type="donut" />
     </div>
   );
