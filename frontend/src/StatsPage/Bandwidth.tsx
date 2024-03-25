@@ -68,13 +68,36 @@ const Bandwidth: React.FC = () => {
     chart: {
       type: "area",
       height: 350,
+      foreColor: "white",
+      toolbar: {
+        show: true,
+        tools: {},
+      },
+      // background: "black",
+      // brush: {
+      //   enabled: true,
+      // },
+      // selection: {
+      //   enabled: true,
+      //   fill: { color: "red" },
+      // },
     },
     dataLabels: {
       enabled: false,
     },
     stroke: {
-      curve: "straight",
+      // curve: "straight",
+      curve: "smooth",
     },
+    tooltip: {
+      theme: "dark",
+    },
+    // theme: {},
+    // colors: ["#FF0080", "#FF00FF"],
+    // markers: {
+    //   colors: "white",
+    //   size: 1,
+    // },
   };
 
   return (
@@ -85,7 +108,7 @@ const Bandwidth: React.FC = () => {
           options={options}
           series={series}
           type="area"
-          height={300}
+          height={400}
         />
       </div>
     </div>
