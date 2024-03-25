@@ -1,5 +1,4 @@
 import HomePage from "./home/HomePage";
-import StorePage from "./store/StorePage";
 import MarketPage from "./market/MarketPage";
 import WalletPage from "./wallet/WalletPage";
 import SettingsPage from "./settings/SettingsPage";
@@ -12,12 +11,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div id="App" className="flex overflow-hidden">
+      <div id="App" className="size-full flex overflow-hidden">
         <Router>
           <Sidebar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/store" element={<StorePage />} />
+            {/* <Route path="/stats" element={<HomePage />} /> */}
+            {/* <Route path="/store" element={<StorePage />} /> */}
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/market" element={<MarketPage />} />
             <Route path="/wallet" element={<WalletPage />} />
