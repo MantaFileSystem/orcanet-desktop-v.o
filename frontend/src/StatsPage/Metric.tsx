@@ -24,17 +24,6 @@ import Bandwidth from "./Bandwidth";
 export default function Metric() {
   return (
     <div className="px-8 pt-8 bg-card rounded-2xl bg-opacity-50 h-full w-full">
-      {/* <Header /> */}
-      {/* <Graph
-        className="bandwidth-graph"
-        title="BANDWIDTH OVER TIME"
-        graph={Bandwidth}
-      /> */}
-      {/* <Graph
-        className="traffic-meter"
-        title="TRAFFIC OVER TIME"
-        graph={Traffic}
-      /> */}
       <div className="animate__animated animate__fadeInUp">
         <Bandwidth />
       </div>
