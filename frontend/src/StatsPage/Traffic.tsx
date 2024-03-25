@@ -11,12 +11,12 @@ export default function Traffic() {
   return (
     <div>
       <h3 className="py-3 text-xl">TRAFFIC OVER TIME</h3>
-      <div className="flex items-center  justify-around pt-4  ">
+      <div className="flex items-center  justify-around">
         <GaugeComponent
           arc={{
             gradient: true,
             padding: 0,
-            width: 0.4,
+            width: 0.5,
             subArcs: [
               {
                 limit: 100,
@@ -27,7 +27,7 @@ export default function Traffic() {
           labels={{
             valueLabel: {
               formatTextValue: textIncoming,
-              style: { fontSize: "32px", fill: "#111", textShadow: "" },
+              style: { fontSize: "32px", fill: "white", textShadow: "" },
             },
             tickLabels: {
               hideMinMax: true,
@@ -44,7 +44,7 @@ export default function Traffic() {
         />
         <GaugeComponent
           arc={{
-            width: 0.4,
+            width: 0.5,
             subArcs: [
               {
                 limit: 100,
@@ -57,7 +57,7 @@ export default function Traffic() {
               formatTextValue: textOutgoing,
               style: {
                 fontSize: "32px",
-                fill: "",
+                fill: "white",
                 textShadow: "",
               },
             },
@@ -75,7 +75,7 @@ export default function Traffic() {
           }}
         />
       </div>
-      <div className="flex items-center  justify-around pb-4">
+      <div className="flex items-center  justify-around pb-4 text-xl">
         <h5>Incoming</h5>
         <h5>Outgoing</h5>
       </div>
