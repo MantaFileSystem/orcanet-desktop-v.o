@@ -20,11 +20,11 @@ export const columns: ColumnDef<IPayment>[] = [
     cell: ({ row }) => {
       const status = row.getValue("status") as string;
       const color =
-        status === "pending"
+        status === "Pending"
           ? "text-yellow-500"
-          : status === "processing"
+          : status === "Processing"
           ? "text-blue-500"
-          : status === "success"
+          : status === "Success"
           ? "text-green-500"
           : "text-red-500";
       return (
