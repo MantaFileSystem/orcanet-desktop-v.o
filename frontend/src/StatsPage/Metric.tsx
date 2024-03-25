@@ -23,7 +23,7 @@ import Bandwidth from "./Bandwidth";
 
 export default function Metric() {
   return (
-    <div className="px-8 pt-8 bg-card rounded-2xl bg-opacity-50 h-full ">
+    <div className="px-8 pt-8 bg-card rounded-2xl bg-opacity-50 h-full w-full">
       {/* <Header /> */}
       {/* <Graph
         className="bandwidth-graph"

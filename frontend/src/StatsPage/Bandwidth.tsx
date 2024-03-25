@@ -71,7 +71,9 @@ const Bandwidth: React.FC = () => {
       foreColor: "white",
       toolbar: {
         show: true,
-        tools: {},
+        tools: {
+          download: false,
+        },
       },
       // background: "black",
       // brush: {
@@ -108,7 +110,7 @@ const Bandwidth: React.FC = () => {
           options={options}
           series={series}
           type="area"
-          height={400}
+          height={300}
         />
       </div>
     </div>
