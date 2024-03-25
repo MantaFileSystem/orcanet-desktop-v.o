@@ -27,7 +27,7 @@ const WalletPage = () => {
   return (
     <div
       id="wallet-page"
-      className="flex flex-col overflow-auto min-h-full grow py-11 px-14"
+      className="flex flex-col overflow-auto min-h-full grow py-11 px-14 scrollbar-none"
     >
       <SearchBar />
       <WalletContainer />
