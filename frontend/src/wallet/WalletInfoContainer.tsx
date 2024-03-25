@@ -1,5 +1,10 @@
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { CoinsIcon } from "lucide-react";
+import { DataTable } from "./DataTable";
+import { WalletData, IPayment } from "./WalletData";
+import { useEffect, useState } from "react";
+import { columns } from "./columns";
 
 function IncomeGraph() {
   const series: number[] = [44, 55, 13, 43, 22];
@@ -15,6 +20,18 @@ function IncomeGraph() {
       },
     },
     labels: ["Files", "Entertainment", "Luxury", "Tech", "Others"],
+    // plotOptions: {
+    //   pie: {
+    //     donut: {
+    //       labels: {
+    //         show: false,
+    //       },
+    //     },
+    //   },
+    // },
+    dataLabels: {
+      // enabled: false,
+    },
   };
 
   return (
@@ -24,15 +41,47 @@ function IncomeGraph() {
   );
 }
 
+async function getData(): Promise<IPayment[]> {
+  // Fetch data from your API here.
+  return WalletData;
+}
+
 export default function WalletInfoContainer() {
+  const [data, setData] = useState<IPayment[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getData();
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
   return (
     <div
       className="col-span-3 grid grid-cols-2 gap-7"
       style={{ gridTemplateRows: "max-content repeat(2, 1fr)" }}
     >
-      <div className="bg-card rounded-2xl">Balance</div>
+      <div className="bg-card rounded-2xl p-8">
+        <h4 className="text-base font-medium">Balance:</h4>
+        <div className="flex justify-items-center gap-3 pt-4 break-all">
+          <CoinsIcon size={40} />
+          <div className="text-4xl font-bold">1024.576</div>
+        </div>
+      </div>
       <IncomeGraph />
-      <div className="bg-card rounded-2xl col-span-2 row-span-2">Table</div>
+      <div className="bg-card rounded-2xl col-span-2 row-span-2">
+        <div className="animate__animated animate__fadeInUp">
+          {/* <h3 className="mb-3 animate__animated animate__fadeInUp">
+            Transactions
+          </h3> */}
+          {data.length > 0 ? (
+            <DataTable columns={columns} data={data} />
+          ) : (
+            <div>Loading Transactions...</div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
