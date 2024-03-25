@@ -62,11 +62,19 @@ export default function WalletInfoContainer() {
       className="col-span-3 grid grid-cols-2 gap-7"
       style={{ gridTemplateRows: "max-content repeat(2, 1fr)" }}
     >
-      <div className="bg-card rounded-2xl p-8">
-        <h4 className="text-base font-medium">Balance:</h4>
-        <div className="flex justify-items-center gap-3 pt-4 break-all">
-          <CoinsIcon size={40} />
-          <div className="text-4xl font-bold">1024.576</div>
+      <div className=" grid grid-rows-2">
+        <div className="bg-card rounded-2xl px-8 pt-4 mb-4">
+          <h4 className="text-base font-medium">Balance:</h4>
+          <div className="flex gap-3 py-4 break-all">
+            <CoinsIcon size={40} />
+            <div className="text-4xl font-bold">1024.576</div>
+          </div>
+        </div>
+        <div className="grid grid-rows-2 bg-card rounded-2xl px-8 pt-4 mt-2">
+          <h4 className="text-base font-medium">Profit & Loss Today:</h4>
+          <div className="flex justify-center break-all">
+            <div className="text-4xl font-bold text-green-400">+1024.576</div>
+          </div>
         </div>
       </div>
       <IncomeGraph />
