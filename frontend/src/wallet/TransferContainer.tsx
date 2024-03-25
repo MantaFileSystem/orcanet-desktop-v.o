@@ -140,7 +140,7 @@ function QRCodeContainer() {
   return (
     <div className="py-14 rounded-3xl mt-10 grid place-items-center bg-gradient-to-r from-fuchsia-500 to-cyan-500 overflow-auto">
       <QRCode value="https://www.google.com" />
-      <div className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 mt-4">
+      <div className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 mt-4 break-all text-center px-8">
         <p className="mt-4">
           12D3KooWM1J3AZKnEvVtEVjwFka2Z2Z9EZo5XVzUoyrAofWRUUWK
         </p>
