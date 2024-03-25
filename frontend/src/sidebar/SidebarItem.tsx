@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useContext } from "react";
 import { SidebarContext } from "./Sidebar";
 

@@ -3,14 +3,13 @@ import {
   ChevronLast,
   ChevronFirst,
   BarChart2,
+  LineChart,
+  WalletCards
 } from "lucide-react";
-import { createContext, useState} from "react";
-import { LayoutDashboard, Settings, Receipt, Package } from "lucide-react";
+import { createContext, useState } from "react";
+import { LayoutDashboard, Settings, Package } from "lucide-react";
 export const SidebarContext = createContext({ expanded: true });
-import {
-  Link,
-  useLocation,
-} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import orcanetLogo from "./../assets/images/OrcaNet-Dark.png";
 import SidebarItem from "./SidebarItem";
 
@@ -20,7 +19,7 @@ const Sidebar = () => {
   const isActive = (path: string) => location.pathname === path;
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-card border-r shadow-sm text-lg">
+      <nav className="h-full flex flex-col bg-stone-950 border-r shadow-sm text-lg">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src={orcanetLogo}
@@ -31,7 +30,7 @@ const Sidebar = () => {
           />
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg  hover:bg-accent bg-black"
+            className="p-1.5 rounded-lg  hover:bg-accent"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
@@ -49,7 +48,7 @@ const Sidebar = () => {
             </Link>
             <Link to="/stats">
               <SidebarItem
-                icon={<Package />}
+                icon={<LineChart />}
                 text="Stats"
                 active={isActive("/stats")}
                 alert={false}
@@ -73,7 +72,7 @@ const Sidebar = () => {
             </Link>
             <Link to="/wallet">
               <SidebarItem
-                icon={<Receipt />}
+                icon={<WalletCards />}
                 text="Wallet"
                 active={isActive("/wallet")}
                 alert={false}

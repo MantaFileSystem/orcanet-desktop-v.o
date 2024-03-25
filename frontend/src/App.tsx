@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div id="App" className="flex overflow-hidden">
+      <div id="App" className="flex overflow-hidden size-full">
         <Router>
           <Sidebar />
           <Routes>
@@ -20,7 +20,7 @@ function App() {
             <Route path="/store" element={<StorePage />} />
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/market" element={<MarketPage />} />
-            <Route path="/wallet" element={<WalletPage />} />
+            <Route path="/wallet/:page?" element={<WalletPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Routes>
         </Router>
