@@ -38,6 +38,7 @@ function MonthlyIncomeChart() {
         text: "OrcaCoins (ORC)",
       },
     },
+    colors: ["#4ade80", "#db2777"],
   };
 
   return (
