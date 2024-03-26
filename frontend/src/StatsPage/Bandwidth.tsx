@@ -95,11 +95,11 @@ const Bandwidth: React.FC = () => {
       theme: "dark",
     },
     // theme: {},
-    // colors: ["#FF0080", "#FF00FF"],
-    // markers: {
-    //   colors: "white",
-    //   size: 1,
-    // },
+    colors: ["#4ade80", "#db2777"],
+    markers: {
+      colors: "white",
+      size: 1,
+    },
   };
 
   return (
