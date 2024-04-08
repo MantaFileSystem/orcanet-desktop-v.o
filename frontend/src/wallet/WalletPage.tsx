@@ -4,6 +4,7 @@ import WalletMiddleContainer from "./WalletMiddleContainer";
 import TransactionTable from "./TransactionTable";
 import { Search } from "lucide-react";
 import { useParams } from "react-router-dom";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 function WalletContainer() {
   const { page } = useParams();
@@ -18,11 +19,23 @@ function WalletContainer() {
 }
 
 function WallerPageHeader() {
+  const { theme } = useTheme();
   return (
-    <div className="bg-white w-full py-5 px-7 flex justify-between items-center drop-shadow-md">
+    <div
+      className={`
+      w-full py-5 px-7 flex justify-between items-center drop-shadow-md
+               ${theme === "light" ? "bg-white" : "bg-black"}
+          `}
+    >
       <div className="flex items-center gap-2">
-        <AlignRight />
-        <h1 className="font-bold text-xl">Wallet</h1>
+        {theme === "light" ? <AlignRight /> : <AlignRight color="white" />}
+        <h1
+          className={`font-bold text-xl ${
+            theme === "light" ? "" : " text-white"
+          }`}
+        >
+          Wallet
+        </h1>
       </div>
       <div className="flex items-center relative">
         <input

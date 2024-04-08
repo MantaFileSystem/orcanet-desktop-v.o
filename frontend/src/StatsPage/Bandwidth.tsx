@@ -1,8 +1,11 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 const Bandwidth: React.FC = () => {
+  const { theme } = useTheme();
+
   const series = [
     {
       name: "In",
@@ -68,7 +71,7 @@ const Bandwidth: React.FC = () => {
     chart: {
       type: "area",
       height: 350,
-      foreColor: "black",
+      foreColor: theme === "light" ? "dark" : "white",
       toolbar: {
         show: true,
         tools: {
@@ -104,7 +107,7 @@ const Bandwidth: React.FC = () => {
       // ],
     },
     tooltip: {
-      theme: "dark",
+      theme: theme === "light" ? "light" : "dark",
       x: {
         format: "dd/MM/yy HH:mm",
       },
@@ -121,6 +124,7 @@ const Bandwidth: React.FC = () => {
       style: {
         fontSize: "16px",
         fontWeight: "bold",
+        color: theme === "light" ? "black" : "white",
         // fontFamily: "Arial, sans-serif",
       },
     },
