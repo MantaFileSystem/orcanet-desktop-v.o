@@ -102,6 +102,10 @@ function MonthlyFileStatsChart() {
   const options: ApexOptions = {
     chart: {
       id: "basic-bar",
+      height: 50,
+    },
+    dataLabels: {
+      enabled: false,
     },
     xaxis: {
       categories: [
@@ -158,7 +162,7 @@ export default function PieChart() {
           color={color2}
         />
       </div>
-      <div className="bg-white rounded-2xl px-4 col-span-3">
+      <div className="bg-white rounded-2xl px-4 col-span-3 h-auto">
         <MonthlyFileStatsChart />
       </div>
     </div>
