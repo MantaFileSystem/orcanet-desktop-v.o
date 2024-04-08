@@ -38,6 +38,7 @@ function MonthlyIncomeChart() {
         text: "OrcaCoins (ORC)",
       },
     },
+    colors: ["#4ade80", "#db2777"],
   };
 
   return (
@@ -56,17 +57,30 @@ function MonthlyIncomeChart() {
 }
 
 function SendPanel() {
+  function send() {
+    const amount = (document.getElementById("amount") as HTMLInputElement)
+      .value;
+    const receiverId = (
+      document.getElementById("receiver-id") as HTMLInputElement
+    ).value;
+    const reason = (document.getElementById("reason") as HTMLInputElement)
+      .value;
+
+    alert(`Sending ${amount} ORC to ${receiverId} with reason: ${reason}`);
+  }
   return (
     <div className="px-5 mt-11">
       <div className="grid grid-cols-2 gap-7">
         <div>
           <h3 className="text-stone-900 text-md font-semibold">Amount</h3>
           <input
+            id="amount"
             type="number"
             className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
           />
           <h3 className="text-stone-900 text-md font-semibold">Reason</h3>
           <input
+            id="reason"
             type="text"
             className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
           />
@@ -77,6 +91,7 @@ function SendPanel() {
               Receiver ID
             </h3>
             <input
+              id="receiver-id"
               type="text"
               className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
             />
@@ -86,7 +101,9 @@ function SendPanel() {
           </div>
         </div>
       </div>
-      <Button className="mt-7 bg-indigo-500 text-white px-7">Send</Button>
+      <Button className="mt-7 bg-indigo-500 text-white px-7" onClick={send}>
+        Send
+      </Button>
     </div>
   );
 }

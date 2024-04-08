@@ -56,7 +56,6 @@ export const WalletData = [
     reason: "きかんしゃトーマス.avi",
     date: new Date("2021-10-10"),
   },
-  // ...
 ];
 
 interface DataTableProps<TData, TValue> {
@@ -170,7 +169,6 @@ export const columns = [
       return (
         <div>
           <div className={`text-right font-medium ${color}`}>{amount}</div>
-          {/* <div className="text-right">Orca Coin</div> */}
         </div>
       );
     },

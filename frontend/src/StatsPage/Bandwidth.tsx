@@ -8,27 +8,27 @@ const Bandwidth: React.FC = () => {
       name: "In",
       data: [
         {
-          x: 1,
+          x: "2018-09-19T00:00:00.000Z",
           y: 100,
         },
         {
-          x: 2,
+          x: "2018-09-19T01:30:00.000Z",
           y: 120,
         },
         {
-          x: 3,
+          x: "2018-09-19T02:30:00.000Z",
           y: 110,
         },
         {
-          x: 4,
+          x: "2018-09-19T03:30:00.000Z",
           y: 350,
         },
         {
-          x: 5,
+          x: "2018-09-19T04:30:00.000Z",
           y: 100,
         },
         {
-          x: 6,
+          x: "2018-09-19T05:30:00.000Z",
           y: 690,
         },
       ],
@@ -37,27 +37,27 @@ const Bandwidth: React.FC = () => {
       name: "Out",
       data: [
         {
-          x: 1,
+          x: "2018-09-19T00:00:00.000Z",
           y: -50,
         },
         {
-          x: 2,
+          x: "2018-09-19T01:30:00.000Z",
           y: -501,
         },
         {
-          x: 3,
+          x: "2018-09-19T02:30:00.000Z",
           y: -205,
         },
         {
-          x: 4,
+          x: "2018-09-19T03:30:00.000Z",
           y: -550,
         },
         {
-          x: 5,
+          x: "2018-09-19T04:30:00.000Z",
           y: -590,
         },
         {
-          x: 6,
+          x: "2018-09-19T05:30:00.000Z",
           y: -600,
         },
       ],
@@ -68,7 +68,7 @@ const Bandwidth: React.FC = () => {
     chart: {
       type: "area",
       height: 350,
-      foreColor: "white",
+      foreColor: "black",
       toolbar: {
         show: true,
         tools: {
@@ -91,8 +91,23 @@ const Bandwidth: React.FC = () => {
       // curve: "straight",
       curve: "smooth",
     },
+    xaxis: {
+      type: "datetime",
+      // categories: [
+      //   "2018-09-19T00:00:00.000Z",
+      //   "2018-09-19T01:30:00.000Z",
+      //   "2018-09-19T02:30:00.000Z",
+      //   "2018-09-19T03:30:00.000Z",
+      //   "2018-09-19T04:30:00.000Z",
+      //   "2018-09-19T05:30:00.000Z",
+      //   "2018-09-19T06:30:00.000Z",
+      // ],
+    },
     tooltip: {
       theme: "dark",
+      x: {
+        format: "dd/MM/yy HH:mm",
+      },
     },
     // theme: {},
     colors: ["#4ade80", "#db2777"],
@@ -100,19 +115,26 @@ const Bandwidth: React.FC = () => {
       colors: "white",
       size: 1,
     },
+    title: {
+      text: "BANDWIDTH",
+      align: "center",
+      style: {
+        fontSize: "16px",
+        fontWeight: "bold",
+        // fontFamily: "Arial, sans-serif",
+      },
+    },
   };
 
   return (
-    <div>
-      <h3 className="pt-4 text-xl">BANDWIDTH OVER TIME</h3>
-      <div>
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="area"
-          height={300}
-        />
-      </div>
+    <div className=" ">
+      {/* <h3 className="pt-4 text-xl">BANDWIDTH OVER TIME</h3> */}
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="area"
+        height={300}
+      />
     </div>
   );
 };
