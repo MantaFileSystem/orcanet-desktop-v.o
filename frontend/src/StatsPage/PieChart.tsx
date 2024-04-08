@@ -139,14 +139,10 @@ function MonthlyFileStatsChart() {
 
   return (
     <div
-      className={`${
-        theme === "light" ? "bg-white" : "bg-black"
-      } p-5 rounded-lg`}
+      className="bg-white dark:bg-black p-5 rounded-lg" 
     >
       <h3
-        className={`${
-          theme === "light" ? "text-stone-900" : "text-white"
-        } text-xl font-bold`}
+        className="text-stone-900 dark:text-white text-xl font-bold" 
       >
         Files Stats
       </h3>
