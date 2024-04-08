@@ -170,7 +170,7 @@ export default function PieChart() {
       <div
         className={`${
           theme === "light" ? "bg-white" : "bg-black text-white"
-        }bg-white rounded-2xl px-4 col-span-3`}
+        } rounded-2xl px-4 col-span-3`}
       >
         <IncomeGraph
           stats={series1}
@@ -182,7 +182,7 @@ export default function PieChart() {
       <div
         className={`${
           theme === "light" ? "bg-white" : "bg-black text-white"
-        }bg-white rounded-2xl px-4 col-span-3`}
+        } rounded-2xl px-4 col-span-3`}
       >
         <IncomeGraph
           stats={series2}
