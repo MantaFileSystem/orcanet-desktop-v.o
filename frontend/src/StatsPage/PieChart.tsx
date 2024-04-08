@@ -3,16 +3,16 @@ import ReactApexChart from "react-apexcharts";
 
 const series1: number[] = [44, 55, 13, 43, 52];
 const series2: number[] = [14, 25, 33, 43, 22];
-const series3: number[] = [44, 55, 13, 43, 22];
+// const series3: number[] = [44, 55, 13, 43, 22];
 const label1: string[] = ["JPG", "MP3", "EXE", "ZIP", "Others"];
 const label2: string[] = ["JPG", "MP3", "EXE", "ZIP", "Others"];
-const label3: string[] = ["Files", "Entertainment", "Luxury", "Tech", "Others"];
+// const label3: string[] = ["Files", "Entertainment", "Luxury", "Tech", "Others"];
 const title1: string = "Files Upload This Month";
 const title2: string = "Files Download This Month";
-const title3: string = "T3";
+// const title3: string = "T3";
 const color1: string = "#009dff";
 const color2: string = "#fa1653";
-const color3: string = "#7bf21f";
+// const color3: string = "#7bf21f";
 
 function IncomeGraph({
   stats,
