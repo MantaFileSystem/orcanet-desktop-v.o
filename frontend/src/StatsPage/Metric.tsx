@@ -1,35 +1,43 @@
-// import Traffic from "../../images/netTraffic.png";
-// import Bandwidth from "../../images/bandwidthGraph.png";
-// import Header from "../Header/Header";
-import Traffic from "./Traffic";
+// import Traffic from "./Traffic";
 import Bandwidth from "./Bandwidth";
+import PieChart from "./PieChart";
 
-// function Graph({
-//   className,
-//   title,
-//   graph,
-// }: {
-//   className: string;
-//   title: string;
-//   graph: string;
-// }) {
-//   return (
-//     <div className={className}>
-//       <h3>{title}</h3>
-//       <img src={graph} alt="Network Data" />
-//     </div>
-//   );
-// }
+function BandwidthInfo() {
+  return (
+    <div className=" grid grid-flow-row grid-rows-2 gap-6 py-12 break-all">
+      <div className=" bg-black bg-opacity-80 rounded-2xl p-8 text-white">
+        <h4 className="text-xl font-medium flex justify-center ">Incoming</h4>
+        <div className="flex justify-center gap-3 pt-4 break-all">
+          <div className="text-3xl font-bold text-green-400">50 Kib/s</div>
+        </div>
+      </div>
+      <div className="  bg-black bg-opacity-80 rounded-2xl p-8 text-white">
+        <h4 className="text-xl font-medium flex justify-center">Outgoing</h4>
+        <div className="flex justify-center gap-3 pt-4 break-all">
+          <div className="text-3xl font-bold text-red-500">80 Kib/s</div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Metric() {
   return (
-    <div className="px-8 pt-8 bg-card rounded-2xl bg-opacity-50 h-full w-full">
-      <div className="animate__animated animate__fadeInUp">
-        <Bandwidth />
+    <div className="px-8 rounded-2xl bg-opacity-50 size-full">
+      <div className=" bg-white rounded-2xl px-16 mx-8 grid grid-cols-5 animate__animated animate__fadeInUp">
+        <div className=" col-span-4 h-full py-16 pr-12">
+          <Bandwidth />
+        </div>
+        <div className=" col-span-1">
+          <BandwidthInfo />
+        </div>
       </div>
       <div className="max-[1000px]:collapse pt-8 animate__animated animate__fadeInUp">
-        <Traffic />
+        <PieChart />
       </div>
+      {/* <div className="max-[1000px]:collapse pt-8 animate__animated animate__fadeInUp">
+        <Traffic />
+      </div> */}
     </div>
   );
 }

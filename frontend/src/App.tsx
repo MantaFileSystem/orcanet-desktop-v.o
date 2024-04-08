@@ -2,7 +2,7 @@ import HomePage from "./home/HomePage";
 import MarketPage from "./market/MarketPage";
 import WalletPage from "./wallet/WalletPage";
 import SettingsPage from "./settings/SettingsPage";
-import DashboardPage from "./StatsPage/DashboardPage";
+import StatsPage from "./StatsPage/StatsPage";
 import Sidebar from "./sidebar/Sidebar";
 
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             {/* <Route path="/stats" element={<HomePage />} /> */}
             {/* <Route path="/store" element={<StorePage />} /> */}
-            <Route path="/stats" element={<DashboardPage />} />
+            <Route path="/stats" element={<StatsPage />} />
             <Route path="/market" element={<MarketPage />} />
             <Route path="/wallet/:page?" element={<WalletPage />} />
             <Route path="/settings" element={<SettingsPage />} />
