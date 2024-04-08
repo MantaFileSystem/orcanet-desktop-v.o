@@ -1,5 +1,6 @@
 import { ApexOptions } from "apexcharts";
 import ReactApexChart from "react-apexcharts";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 const series1: number[] = [44, 55, 13, 43, 52];
 const series2: number[] = [14, 25, 33, 43, 22];
@@ -26,6 +27,7 @@ function IncomeGraph({
   color: string;
 }) {
   const series: number[] = stats;
+  const { theme } = useTheme();
 
   const options: ApexOptions = {
     // colors: ["#008080", "#FF7F50", "#BCB88A", "#DAA520", "#E6E6FA"],
@@ -35,7 +37,7 @@ function IncomeGraph({
     },
     legend: {
       labels: {
-        colors: "black",
+        colors: theme === "light" ? "black" : "white",
       },
       position: "right",
       offsetY: 0,
@@ -73,7 +75,7 @@ function IncomeGraph({
     },
     title: {
       text: title,
-      style: {},
+      style: { color: theme === "light" ? "black" : "white" },
       //   offsetX: 0,
       offsetY: -5,
       align: "center",
@@ -88,6 +90,8 @@ function IncomeGraph({
 }
 
 function MonthlyFileStatsChart() {
+  const { theme } = useTheme();
+
   const series = [
     {
       name: "File Upload",
@@ -103,6 +107,11 @@ function MonthlyFileStatsChart() {
     chart: {
       id: "basic-bar",
       height: 50,
+      foreColor: theme === "light" ? "dark" : "white",
+      background: theme === "light" ? "white" : "black",
+    },
+    tooltip: {
+      theme: theme === "light" ? "light" : "dark",
     },
     dataLabels: {
       enabled: false,
@@ -129,8 +138,18 @@ function MonthlyFileStatsChart() {
   };
 
   return (
-    <div className="bg-white p-5 rounded-lg">
-      <h3 className="text-stone-900 text-xl font-bold">Files Stats</h3>
+    <div
+      className={`${
+        theme === "light" ? "bg-white" : "bg-black"
+      } p-5 rounded-lg`}
+    >
+      <h3
+        className={`${
+          theme === "light" ? "text-stone-900" : "text-white"
+        } text-xl font-bold`}
+      >
+        Files Stats
+      </h3>
       <div>
         <ReactApexChart
           options={options}
@@ -144,9 +163,15 @@ function MonthlyFileStatsChart() {
 }
 
 export default function PieChart() {
+  const { theme } = useTheme();
+
   return (
     <div className=" grid grid-flow-col grid-cols-9 gap-8 mx-8 h-auto">
-      <div className="bg-white rounded-2xl px-4 col-span-3">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        }bg-white rounded-2xl px-4 col-span-3`}
+      >
         <IncomeGraph
           stats={series1}
           label={label1}
@@ -154,7 +179,11 @@ export default function PieChart() {
           color={color1}
         />
       </div>
-      <div className="bg-white rounded-2xl px-4 col-span-3">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        }bg-white rounded-2xl px-4 col-span-3`}
+      >
         <IncomeGraph
           stats={series2}
           label={label2}
@@ -162,7 +191,11 @@ export default function PieChart() {
           color={color2}
         />
       </div>
-      <div className="bg-white rounded-2xl px-4 col-span-3 h-auto">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        }bg-white rounded-2xl px-4 col-span-3`}
+      >
         <MonthlyFileStatsChart />
       </div>
     </div>

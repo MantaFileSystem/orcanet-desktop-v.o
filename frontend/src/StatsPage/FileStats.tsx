@@ -1,7 +1,14 @@
+import { useTheme } from "@/components/ui/ThemeProvider";
+
 export default function FileStats() {
+  const { theme } = useTheme();
   return (
     <div className="grid grid-cols-4 gap-7 h-auto py-8 px-16">
-      <div className=" bg-white rounded-2xl p-8">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        } rounded-2xl p-8`}
+      >
         <h4 className="text-base font-medium flex justify-center">
           File Upload This Month:
         </h4>
@@ -12,7 +19,11 @@ export default function FileStats() {
           + 120.9%
         </div>
       </div>
-      <div className=" bg-white rounded-2xl p-8">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        } rounded-2xl p-8`}
+      >
         <h4 className="text-base font-medium flex justify-center">
           File Download This Month:
         </h4>
@@ -23,7 +34,11 @@ export default function FileStats() {
           + 130.9%
         </div>
       </div>
-      <div className=" bg-white rounded-2xl p-8">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        } rounded-2xl p-8`}
+      >
         <h4 className="text-base font-medium flex justify-center">
           Revenue Intotal:
         </h4>
@@ -32,7 +47,11 @@ export default function FileStats() {
           <div className="text-2xl font-bold ">ORC</div>
         </div>
       </div>
-      <div className=" bg-white rounded-2xl p-8">
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-black text-white"
+        } rounded-2xl p-8`}
+      >
         <h4 className="text-base font-medium flex justify-center">
           Spending Intotal:
         </h4>

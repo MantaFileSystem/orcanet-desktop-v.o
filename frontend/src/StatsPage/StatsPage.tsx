@@ -4,13 +4,28 @@
 import Metric from "./Metric";
 import FileStats from "./FileStats";
 import { AlignRight, Search } from "lucide-react";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 function StatsPageHeader() {
+  const { theme } = useTheme();
+
+  console.log("Current theme:", theme);
   return (
-    <div className="bg-white w-full py-5 px-7 flex justify-between items-center drop-shadow-md">
+    <div
+      className={`
+      w-full py-5 px-7 flex justify-between items-center drop-shadow-md
+               ${theme === "light" ? "bg-white" : "bg-black"}
+          `}
+    >
       <div className="flex items-center gap-2">
-        <AlignRight />
-        <h1 className="font-bold text-xl">Stats</h1>
+        {theme === "light" ? <AlignRight /> : <AlignRight color="white" />}
+        <h1
+          className={`font-bold text-xl ${
+            theme === "light" ? "" : " text-white"
+          }`}
+        >
+          Stats
+        </h1>
       </div>
       <div className="flex items-center relative">
         <input

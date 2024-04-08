@@ -3,8 +3,10 @@ import { ApexOptions } from "apexcharts";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import QRCode from "react-qr-code";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 function MonthlyIncomeChart() {
+  const { theme } = useTheme();
   const series = [
     {
       name: "Revenue",
@@ -19,6 +21,11 @@ function MonthlyIncomeChart() {
   const options: ApexOptions = {
     chart: {
       id: "basic-bar",
+      foreColor: theme === "light" ? "dark" : "white",
+      background: theme === "light" ? "white" : "black",
+    },
+    tooltip: {
+      theme: theme === "light" ? "light" : "dark",
     },
     xaxis: {
       categories: [
@@ -42,8 +49,18 @@ function MonthlyIncomeChart() {
   };
 
   return (
-    <div className="bg-white p-5 rounded-lg">
-      <h3 className="text-stone-900 text-xl font-bold">Revenue</h3>
+    <div
+      className={`${
+        theme === "light" ? "bg-white" : "bg-black"
+      } p-5 rounded-lg`}
+    >
+      <h3
+        className={`${
+          theme === "light" ? "text-stone-900" : "text-white"
+        } text-xl font-bold`}
+      >
+        Revenue
+      </h3>
       <div>
         <ReactApexChart
           options={options}
@@ -57,6 +74,7 @@ function MonthlyIncomeChart() {
 }
 
 function SendPanel() {
+  const { theme } = useTheme();
   function send() {
     const amount = (document.getElementById("amount") as HTMLInputElement)
       .value;
@@ -72,28 +90,50 @@ function SendPanel() {
     <div className="px-5 mt-11">
       <div className="grid grid-cols-2 gap-7">
         <div>
-          <h3 className="text-stone-900 text-md font-semibold">Amount</h3>
+          <h3
+            className={`${
+              theme === "light" ? "text-stone-900" : "text-white"
+            } text-md font-semibold`}
+          >
+            Amount
+          </h3>
           <input
             id="amount"
             type="number"
-            className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
+            className={`border ${
+              theme === "light" ? "border-stone-900" : " border-white"
+            }  rounded-lg px-3 py-2 w-full mt-2`}
           />
-          <h3 className="text-stone-900 text-md font-semibold">Reason</h3>
+          <h3
+            className={`${
+              theme === "light" ? "text-stone-900" : "text-white"
+            } text-md font-semibold`}
+          >
+            Reason
+          </h3>
           <input
             id="reason"
             type="text"
-            className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
+            className={`border ${
+              theme === "light" ? "border-stone-900" : " border-white"
+            }  rounded-lg px-3 py-2 w-full mt-2`}
           />
         </div>
         <div className="h-full flex justify-center items-center">
           <div className="w-full">
-            <h3 className="text-stone-900 text-md font-semibold">
+            <h3
+              className={`${
+                theme === "light" ? "text-stone-900" : "text-white"
+              } text-md font-semibold`}
+            >
               Receiver ID
             </h3>
             <input
               id="receiver-id"
               type="text"
-              className="border border-stone-900 rounded-lg px-3 py-2 w-full mt-2"
+              className={`border ${
+                theme === "light" ? "border-stone-900" : " border-white"
+              }  rounded-lg px-3 py-2 w-full mt-2`}
             />
             <p className="w-full text-center text-sm text-gray-500">
               Please enter the Wallet ID of the Receiver
@@ -118,11 +158,15 @@ function QRCodeContainer() {
 
 function TransferPanel() {
   const [displayQR, setDisplayQR] = useState(false);
-
+  const { theme } = useTheme();
   return (
-    <div className="bg-white p-5 rounded-lg text-stone-900">
+    <div
+      className={`${
+        theme === "light" ? "bg-white text-stone-900" : " bg-black text-white"
+      } p-5 rounded-lg `}
+    >
       <div className="flex justify-between">
-        <h3 className="text-stone-900 text-xl font-bold">Transfer</h3>
+        <h3 className=" text-xl font-bold">Transfer</h3>
         <div className="flex font-semibold gap-5 ">
           <div
             className={`h-fit ${

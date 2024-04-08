@@ -19,6 +19,8 @@ import {
 import { ChevronsRight } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
+import { useTheme } from "@/components/ui/ThemeProvider";
+
 export const WalletData = [
   {
     id: "59a53ee428a643e940546c5ccfc5663e",
@@ -72,9 +74,14 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+  const { theme } = useTheme();
 
   return (
-    <div className="rounded-md bg-white">
+    <div
+      className={`rounded-md ${
+        theme === "light" ? "bg-white text-stone-900" : "bg-black text-white"
+      }`}
+    >
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -83,7 +90,9 @@ export function DataTable<TData, TValue>({
                 return (
                   <TableHead
                     key={header.id}
-                    className="font-semibold text-stone-900"
+                    className={`font-semibold ${
+                      theme === "light" ? " text-stone-900" : " text-white"
+                    }`}
                   >
                     {header.isPlaceholder
                       ? null
@@ -177,11 +186,22 @@ export const columns = [
 
 export default function TransactionTable() {
   const { page } = useParams();
+  const { theme } = useTheme();
 
   return (
-    <div className="rounded-md bg-white p-5">
+    <div
+      className={`rounded-md ${
+        theme === "light" ? "bg-white" : "bg-black"
+      } p-5`}
+    >
       <div className="flex justify-between font-bold mb-2">
-        <h3 className="text-stone-900 text-xl">Transactions</h3>
+        <h3
+          className={`${
+            theme === "light" ? "text-stone-900" : "text-white"
+          } text-xl`}
+        >
+          Transactions
+        </h3>
         {page !== "transactions" && (
           <Link to="/wallet/transactions">
             <div className="text-indigo-500 flex gap-2 text-sm items-center hover:cursor-pointer">
