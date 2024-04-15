@@ -2,6 +2,8 @@
 
 ## About
 
+**API Doc:** [https://github.com/MantaFileSystem/orcanet-desktop-v.o/blob/api_doc/api_doc.md](https://github.com/MantaFileSystem/orcanet-desktop-v.o/blob/api_doc/api_doc.md)
+
 This is the official Wails React-TS template.
 
 You can configure the project by editing `wails.json`. More information about the project settings can be found
