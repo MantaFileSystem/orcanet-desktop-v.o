@@ -19,7 +19,7 @@ const Sidebar = () => {
   const isActive = (path: string) => location.pathname === path;
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-stone-950 border-r shadow-sm text-lg">
+      <nav className="h-full flex flex-col bg-stone-950 border-r shadow-sm text-lg text-white">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src={orcanetLogo}
