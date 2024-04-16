@@ -4,7 +4,7 @@
 
 ## Endpoints
 
-### Wallet Eendpoints
+### Wallet Endpoints
 #### Get Balance
 *Return the balance of the given wallet ID*
 - **Endpoint:** `/balance`
@@ -204,12 +204,12 @@
     }
     ```
 
-#### Get Activity (complete)
+#### Get Activity
 *Return the upload and download files of **each day** in the previous three months.*
 - **Endpoint:** `/activity`
 - **Method:** GET
 - **Authentication:** None
-- **Parameters:**
+- **Payload:**
   - `pub_key` (required): The public key to retrieve.
 - **Example Request:**
     ```
@@ -230,7 +230,76 @@
             "date": "Mar30",
             "download": "10",
             "upload": "2",
-          }
+          },
         ],        
+    }
+    ```
+
+### Mining Page
+#### Get Device (OS)
+*Get the device list from the OS.*
+- **Endpoint:** `/device_list`
+- **Method:** GET
+- **Authentication:** None
+- **Parameters:**
+  
+- **Example Request:**
+    ```
+    GET https://.com/api/device_list
+    ```
+- **Example Payload:**
+    ```json
+    {
+      "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+    }
+- **Example Response:**
+    ```json
+    {
+        "_id": "65680d250505420b42427a82",
+        "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "devices": [
+          {
+            "device_id": "65680d250505420b42427a82",
+            "device_name": "GeForce RTX 4090",
+            "hash_power": "37.56",
+            "status": "Mining",
+            "power": "30",
+            "profitability": "0.5523342",
+          },
+        ],
+    }
+    ```
+
+#### Put Device (OS)
+*Turn on/off the device*
+- **Endpoint:** `/device`
+- **Method:** GET
+- **Authentication:** None
+- **Parameters:**
+  - `device_id` (required): The device.
+- **Payload:**
+  - `pub_key` (required): The public key to retrieve.
+  - `switch` (required): The status of the device should be.
+- **Example Request:**
+    ```
+    GET https://.com/api/device?device_id=80d250505420b42427a82
+    ```
+- **Example Payload:**
+    ```json
+    {
+      "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+      "switch": "1",
+    }
+- **Example Response:**
+    ```json
+    {
+        "_id": "65680d250505420b42427a82",
+        "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "device_id": "80d250505420b42427a82",
+        "device_name": "GeForce RTX 4090",
+        "hash_power": "37.56",
+        "status": "Mining",
+        "power": "30",
+        "profitability": "0.5523342",
     }
     ```
