@@ -152,7 +152,7 @@
     ```
 
 ### Stats Page
-#### Get Speed (complete)
+#### Get Speed
 *Return the upload and download speed (in Kb/s) of the given public key.*
 - **Endpoint:** `/transaction`
 - **Method:** GET
@@ -178,7 +178,7 @@
     }
     ```
 
-#### Get File Type (complete)
+#### Get File Type
 *Return the upload and download files' types in the past month of the given public key.*
 - **Endpoint:** `/types`
 - **Method:** GET
