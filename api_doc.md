@@ -236,7 +236,7 @@
     ```
 
 ### Mining Page
-#### Get Device (OS)
+#### Get Device List
 *Get the device list from the OS.*
 - **Endpoint:** `/device_list`
 - **Method:** GET
@@ -270,7 +270,7 @@
     }
     ```
 
-#### Put Device (OS)
+#### Put Device
 *Turn on/off the device*
 - **Endpoint:** `/device`
 - **Method:** GET
