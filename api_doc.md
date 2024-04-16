@@ -153,12 +153,12 @@
 
 ### Stats Page
 #### Get Speed (complete)
-*Return the upload and download speed of the given public key.*
+*Return the upload and download speed (in Kb/s) of the given public key.*
 - **Endpoint:** `/transaction`
 - **Method:** GET
 - **Authentication:** None
 - **Parameters:**
-  - `wallet_id` (required): The id of the wallet to retrieve.
+  - `pub_key` (required): The id of the wallet to retrieve.
 - **Example Request:**
     ```
     GET https://.com/api/transaction
@@ -166,15 +166,71 @@
 - **Example Payload:**
     ```json
     {
-      "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+      "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
     }
 - **Example Response:**
     ```json
     {
         "_id": "65680d250505420b42427a82",
-        "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
-        "upload_speed": "30", 			// The return value should be in Kb/s
-    		"download_speed": "2000",  	// The return value should be in Kb/s
-        
+        "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "upload_speed": "30",
+    		"download_speed": "2000",        
+    }
+    ```
+
+#### Get File Type (complete)
+*Return the upload and download files' types in the past month of the given public key.*
+- **Endpoint:** `/types`
+- **Method:** GET
+- **Authentication:** None
+- **Parameters:**
+  - `pub_key` (required): The public key to retrieve.
+- **Example Request:**
+    ```
+    GET https://.com/api/types
+    ```
+- **Example Payload:**
+    ```json
+    {
+      "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+    }
+- **Example Response:**
+    ```json
+    {
+        "_id": "65680d250505420b42427a82",
+        "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "upload_speed": "30",
+    		"download_speed": "2000",        
+    }
+    ```
+
+#### Get Activity (complete)
+*Return the upload and download files of **each day** in the previous three months.*
+- **Endpoint:** `/activity`
+- **Method:** GET
+- **Authentication:** None
+- **Parameters:**
+  - `pub_key` (required): The public key to retrieve.
+- **Example Request:**
+    ```
+    GET https://.com/api/activity
+    ```
+- **Example Payload:**
+    ```json
+    {
+      "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+    }
+- **Example Response:**
+    ```json
+    {
+        "_id": "65680d250505420b42427a82",
+        "pub_key": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "activities": [
+          {
+            "date": "Mar30",
+            "download": "10",
+            "upload": "2",
+          }
+        ],        
     }
     ```
