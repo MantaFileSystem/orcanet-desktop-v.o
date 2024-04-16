@@ -175,6 +175,6 @@
         "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
         "upload_speed": "30", 			// The return value should be in Kb/s
     		"download_speed": "2000",  	// The return value should be in Kb/s
-        ],
+        
     }
     ```
