@@ -345,3 +345,30 @@ _Turn on/off the device_
     "profitability": "0.5523342"
   }
   ```
+
+#### Get Unpaid Balance
+
+\_get the number of unpaid balance for mining
+
+- **Endpoint:** `/mining`
+- **Method:** GET
+- **Authentication:** None
+- **Parameters:**
+  - `wallet_id` (required): The device.
+- **Example Request:**
+  ```
+  GET https://.com/api/unpaidBalance
+  ```
+- **Example Payload:**
+  ```json
+  {
+    "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+  }
+  ```
+- **Example Response:**
+  ```json
+  {
+    "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+    "unpaidBalance": "100.00"
+  }
+  ```
