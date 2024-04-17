@@ -350,7 +350,7 @@ _Turn on/off the device_
 
 \_get the number of unpaid balance for mining
 
-- **Endpoint:** `/umpaidBalance`
+- **Endpoint:** `/unpaidBalance`
 - **Method:** GET
 - **Authentication:** None
 - **Parameters:**
