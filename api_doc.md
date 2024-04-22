@@ -89,17 +89,19 @@ _Return the **latest 30** transactions of the given wallet ID_
 - **Example Response:**
   ```json
   {
-      "_id": "65680d250505420b42427a82",
-      "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
-      "transaction":[
-        {
-          "transaction_id": "59a53ee428a643e940546c5ccfc5663e",
-          "reason": "Dota2_OnePunchGodModeMenu.exe"
-          "status": "pending",
-          "time": "2023-11-30T04:20:20.244Z",
-          "amount": "0.000012323",
-        },
-      ],
+    "_id": "65680d250505420b42427a82",
+    "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+    "transaction": [
+      {
+        "transaction_id": "59a53ee428a643e940546c5ccfc5663e",
+        "reason": "Dota2_OnePunchGodModeMenu.exe",
+        "status": "pending",
+        "time": "2023-11-30T04:20:20.244Z",
+        "amount": "0.000012323",
+        "send_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "receive_id": "33hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+      }
+    ]
   }
   ```
 
@@ -125,17 +127,19 @@ _Return **all** the transactions of the given wallet ID_
 - **Example Response:**
   ```json
   {
-      "_id": "65680d250505420b42427a82",
-      "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
-      "transaction":[
-        {
-          "transaction_id": "59a53ee428a643e940546c5ccfc5663e",
-          "reason": "Dota2_OnePunchGodModeMenu.exe"
-          "status": "pending",
-          "time": "2023-11-30T04:20:20.244Z",
-          "amount": "0.000012323",
-        },
-      ],
+    "_id": "65680d250505420b42427a82",
+    "wallet_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+    "transaction": [
+      {
+        "transaction_id": "59a53ee428a643e940546c5ccfc5663e",
+        "reason": "Dota2_OnePunchGodModeMenu.exe",
+        "status": "pending",
+        "time": "2023-11-30T04:20:20.244Z",
+        "amount": "0.000012323",
+        "send_id": "13hgriwdGXvPyWFABDX6QByyxvN8cWCgDp",
+        "receive_id": "33hgriwdGXvPyWFABDX6QByyxvN8cWCgDp"
+      }
+    ]
   }
   ```
 
@@ -150,7 +154,7 @@ _Return the transaction of the given wallet ID_
   - `wallet_id` (required): The id of the wallet to retrieve.
 - **Example Request:**
   ```
-  GET https://.com/api/transfer
+  POST https://.com/api/transfer
   ```
 - **Example Payload:**
   ```json
