@@ -119,7 +119,16 @@ router.get("/transactions/complete", (req, res) => {
 });
 
 router.post("/transfer", (req, res)=> {
+  const transaction = {
+    id: "061b96f36e163ef82de2feefe7d7aaba",
+    receiver: req.body.receiver,
+    amount: -req.body.amount,
+    status: "Pending",
+    reason: req.body.reason,
+    date: new Date(),
+  };
 
+  walletData.transactions.unshift(transaction);
 });
 
 
