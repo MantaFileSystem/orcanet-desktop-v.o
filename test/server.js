@@ -1,19 +1,21 @@
 const express = require("express"),
   dotenv = require("dotenv"),
-  testRouter = require("./routes/test");
+  walletRouter = require("./routes/wallet"),
+  statsRouter = require("./routes/stats");
 
 dotenv.config();
 
 const app = express(),
   port = Number(process.env.PORT) || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/test", testRouter);
-
 const server = app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/wallet", walletRouter);
+app.use("/stats", statsRouter);
 
 process.on("SIGINT", () => {
   server.close();
